@@ -1,9 +1,12 @@
-  // using System.Collections.Generic;
+  using System.Collections.Generic;
 
-  // namespace VendorAndOrder.Models
-  // {
-  //   public class Vendor
-  //   {
-
-  //   }
-  // }
+  namespace VendorAndOrderTracker.Models
+  {
+    public class Order
+    {
+      public Order()
+      {
+        
+      }
+    }
+  }
