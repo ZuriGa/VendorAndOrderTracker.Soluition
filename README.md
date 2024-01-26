@@ -13,9 +13,7 @@
 
 
 ## Description: 
-### A user should be able to specify how many loaves of Bread and how many Pastry's they'd like. The application will return the total cost of the order with discounts.
-* Buy 2, get 1 free or a single loaf costs $5.
-* Buy 3, get 1 free or a single pastry costs $2.
+###
 
 
 ## Setup/Installation Requirements ⚙️ 🖥️
