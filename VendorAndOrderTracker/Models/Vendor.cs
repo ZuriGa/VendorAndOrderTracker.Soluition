@@ -6,10 +6,13 @@
     {
       public string Name { get; set; }
 
-      public Vendor(string VendorName)
+      public Vendor(string VendorName, string VendorDescription)
       {
         Name = VendorName;
-        
+        Description = VendorDescription;
+
       }
+      
+      public string Description { get; }
     }
   }
