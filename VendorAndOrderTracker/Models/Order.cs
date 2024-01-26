@@ -4,9 +4,10 @@
   {
     public class Order
     {
-      public Order()
+      public string Title { get; set; }
+      public Order(string title)
       {
-        
+        Title = title;
       }
     }
   }
