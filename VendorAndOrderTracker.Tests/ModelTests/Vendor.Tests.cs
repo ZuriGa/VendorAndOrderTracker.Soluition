@@ -58,12 +58,12 @@ namespace VendorAndOrderTracker.Test
 
     }
 
-    // [TestMethod]
-    // public void GetId_ReturnVendorId_Int()
-    // {
-    //   Vendor newVendor = new Vendor("Test Name", description);
-    //   int result = newVendor.Id;
-    //   Assert.AreEqual(1, result);
-    // }
+    [TestMethod]
+    public void GetId_ReturnVendorId_Int()
+    {
+      Vendor newVendor = new Vendor("Test Name", "description of vendor");
+      int result = newVendor.Id;
+      Assert.AreEqual(1, result);
+    }
   }
 }

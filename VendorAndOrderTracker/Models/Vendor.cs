@@ -12,7 +12,7 @@
         Name = VendorName;
         Description = VendorDescription;
         _instances.Add(this);
-        // Id = _instances.Count;
+        Id = _instances.Count;
 
       }
       public string Description { get; set; }
@@ -26,6 +26,6 @@
       {
         _instances.Clear();
       }
-      // public int Id { get; }
+      public int Id { get; }
     }
   }
