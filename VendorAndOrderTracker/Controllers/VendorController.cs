@@ -32,15 +32,17 @@ namespace VendorAndOrderTracker.Controllers
     public ActionResult Show(int id)
     {
       Vendor selectedVendor = Vendor.Find(id);
-      if (selectedVendor == null)
-      {
+    if (selectedVendor == null)
+    {
         return RedirectToAction("Index");
-      }
-
-      return View(selectedVendor);
+    }
+    Dictionary<string, object> model = new Dictionary<string, object>();
+    model.Add("vendor", selectedVendor);
+    model.Add("orders", selectedVendor.Orders);
+    return View(model);
     }
 
-    [HttpGet("/vendors/{vendorId}/orders/new")]
+    [HttpGet("/vendors/{vendorId}/orders/neworder")]
     public ActionResult NewOrder(int vendorId)
     {
       Vendor vendor = Vendor.Find(vendorId);

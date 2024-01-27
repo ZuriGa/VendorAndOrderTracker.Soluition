@@ -17,7 +17,7 @@
     <h3>Here are all the orders for this vendor:</h3>
 
     <ol>
-    @foreach (Order order in @Model["orders"])
+    @foreach (Order order in (List<Order>)@Model["orders"])
     {
       @* <li><a href='/vendors/@Model["orders"].Id/orders/@orders.Id'>@vendor.Description</a></li> *@
       <li>@order.Title - @order.Description - @order.Price</li>
