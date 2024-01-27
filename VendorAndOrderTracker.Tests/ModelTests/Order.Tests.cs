@@ -112,7 +112,7 @@ namespace VendorAndOrderTracker.Tests
     }
 
     [TestMethod]
-    public void GetId_ReturnOrderId_Int()
+    public void GetId_OrdersInstantiateWithAnIdAndGetterReturns_Int()
     {
       Order newOrder = new Order("Order title", "Order description", 5);
       int result = newOrder.Id;
