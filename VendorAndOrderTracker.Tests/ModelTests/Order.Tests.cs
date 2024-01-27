@@ -6,8 +6,13 @@ using System;
 namespace VendorAndOrderTracker.Tests
 {
   [TestClass]
-  public class OrderTests
+  public class OrderTests : IDisposable
   {
+    public void Dispose()
+    {
+      Vendor.ClearAll();
+    }
+  
     [TestInitialize]
     public void Initialize()
     {
@@ -104,6 +109,14 @@ namespace VendorAndOrderTracker.Tests
       Console.WriteLine($"Actual Orders: {string.Join(", ", result)}");
 
       CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void GetId_ReturnOrderId_Int()
+    {
+      Order newOrder = new Order("Order title", "Order description", 5);
+      int result = newOrder.Id;
+      Assert.AreEqual(1, result);
     }
   }
 }
