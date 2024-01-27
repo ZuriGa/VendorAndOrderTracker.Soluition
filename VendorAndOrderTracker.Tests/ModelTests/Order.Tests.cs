@@ -74,5 +74,14 @@ namespace VendorAndOrderTracker.Tests
       int result = newOrder.Price;
       Assert.AreEqual(updatedPrice, result);
     }
+
+    [TestMethod]
+    public void GetOrderDate_ReturnsOrderDate_DateTime()
+    {
+      Order newOrder = new Order("Order title",  "Order description", 5);
+      DateTime expectedDate = DateTime.Now;
+      DateTime actualDate = newOrder.DatePlaced;
+      Assert.IsTrue((expectedDate - actualDate).Duration() < TimeSpan.FromSeconds(1));
+    }
   }
 }
