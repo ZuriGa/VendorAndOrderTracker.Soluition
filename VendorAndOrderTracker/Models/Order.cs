@@ -30,5 +30,9 @@ namespace VendorAndOrderTracker.Models
       _orders.Clear();
     }
 
+    public static Order Find(int searchId)
+    {
+      return _orders[searchId-1];
+    }
   }
 }

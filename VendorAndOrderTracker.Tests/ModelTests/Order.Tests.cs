@@ -104,10 +104,6 @@ namespace VendorAndOrderTracker.Tests
       Order newOrder2 = new Order(order2, "Order description", 10);
       List<Order> newList = new List<Order> { newOrder1, newOrder2 };
       List<Order> result = Order.GetAll();
-      Console.WriteLine($"Expected Count: {newList.Count}, Actual Count: {result.Count}");
-      Console.WriteLine($"Expected Orders: {string.Join(", ", newList)}");
-      Console.WriteLine($"Actual Orders: {string.Join(", ", result)}");
-
       CollectionAssert.AreEqual(newList, result);
     }
 
@@ -117,6 +113,17 @@ namespace VendorAndOrderTracker.Tests
       Order newOrder = new Order("Order title", "Order description", 5);
       int result = newOrder.Id;
       Assert.AreEqual(1, result);
+    }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectOrder_Order()
+    {
+      string order1 = "order 1";
+      string order2 = "order 2";
+      Order newOrder1 = new Order(order1, "Order description", 5);
+      Order newOrder2 = new Order(order2, "Order description", 10);
+      Order result = Order.Find(1);
+      Assert.AreEqual(newOrder1, result);
     }
   }
 }
