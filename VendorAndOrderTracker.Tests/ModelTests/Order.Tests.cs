@@ -6,12 +6,18 @@ using System;
 namespace VendorAndOrderTracker.Tests
 {
   [TestClass]
-  public class OrderTests 
+  public class OrderTests
   {
+    [TestInitialize]
+    public void Initialize()
+    {
+      Order.ClearAll();
+    }
+
     [TestMethod]
     public void OrderConstructor_CreatesInstanceOfOrder_Order()
     {
-      Order newOrder = new Order("Order title",  "Order description", 5);
+      Order newOrder = new Order("Order title", "Order description", 5);
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
 
@@ -19,7 +25,7 @@ namespace VendorAndOrderTracker.Tests
     public void GetOrderTitle_ReturnsOrderTitle_String()
     {
       string title = "Order title";
-      Order newOrder = new Order(title,  "Order description", 5);
+      Order newOrder = new Order(title, "Order description", 5);
       string result = newOrder.Title;
       Assert.AreEqual(title, result);
     }
@@ -28,13 +34,13 @@ namespace VendorAndOrderTracker.Tests
     public void SetOrderTitle_SetOrderTitle_String()
     {
       string title = "Order title";
-      Order newOrder = new Order(title,  "Order description", 5);
+      Order newOrder = new Order(title, "Order description", 5);
       string updatedTitle = "New Order";
       newOrder.Title = updatedTitle;
       string result = newOrder.Title;
       Assert.AreEqual(updatedTitle, result);
     }
-    
+
     [TestMethod]
     public void GetOrderDescription_ReturnsOrderDescription_String()
     {
@@ -78,10 +84,26 @@ namespace VendorAndOrderTracker.Tests
     [TestMethod]
     public void GetOrderDate_ReturnsOrderDate_DateTime()
     {
-      Order newOrder = new Order("Order title",  "Order description", 5);
+      Order newOrder = new Order("Order title", "Order description", 5);
       DateTime expectedDate = DateTime.Now;
       DateTime actualDate = newOrder.DatePlaced;
       Assert.IsTrue((expectedDate - actualDate).Duration() < TimeSpan.FromSeconds(1));
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsAllOrders_OrderList()
+    {
+      string order1 = "order 1";
+      string order2 = "order 2";
+      Order newOrder1 = new Order(order1, "Order description", 5);
+      Order newOrder2 = new Order(order2, "Order description", 10);
+      List<Order> newList = new List<Order> { newOrder1, newOrder2 };
+      List<Order> result = Order.GetAll();
+      Console.WriteLine($"Expected Count: {newList.Count}, Actual Count: {result.Count}");
+      Console.WriteLine($"Expected Orders: {string.Join(", ", newList)}");
+      Console.WriteLine($"Actual Orders: {string.Join(", ", result)}");
+
+      CollectionAssert.AreEqual(newList, result);
     }
   }
 }
