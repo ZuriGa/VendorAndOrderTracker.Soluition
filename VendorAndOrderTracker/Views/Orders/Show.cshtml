@@ -11,20 +11,22 @@
       crossorigin="anonymous">
   </head>
   <body>
-    @* <img src="~/img/logo.png"> *@
+    <img src="~/img/bakery.jpeg">
+    <div class="container">
     <h1>Order Details: </h1>
 
-    <h2>@Model["order"].Title</h2>
-    <h3>Price: $@Model["order"].Price</h3>
-    <h3>Date Placed: @Model["order"].DatePlaced</h3>
-    <h3>Order Description: @Model["order"].Description</h3>
+    <h5>@Model["order"].Title</h5>
+    <h5>Price: $@Model["order"].Price</h>
+    <h5>Order Description: @Model["order"].Description</h5>
     
     <h2>Vendor Information:</h2>
-    <p>Vendor Name: @Model["vendor"].Name</p>
-    <p>Vendor Description: @Model["vendor"].Description</p>
-
-
-    <a href='/vendors/@Model["vendor"].Id'>Back to Vendor</a>
-    <a href='/vendors/@Model["vendor"].Id/orders/new'>Add another order</a>
+    <h5>Vendor Name: @Model["vendor"].Name</h5>
+    <h5>Vendor Description: @Model["vendor"].Description</h5>
+    <h6>Date Placed: @Model["order"].DatePlaced</h6>
+    </div>
+    <div class="center"> 
+      <a href='/vendors/@Model["vendor"].Id'><button type="submit" class="btn btn-outline-dark btn-lg">Back to Vendor</button></a>
+      <a href='/vendors/@Model["vendor"].Id/orders/neworder'><button type="submit" class="btn btn-outline-dark btn-lg">Add another order</button></a>
+    </div>
   </body>
 </html>

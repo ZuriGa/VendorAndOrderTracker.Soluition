@@ -10,23 +10,28 @@
 </head>
 
 <body>
+  <img src="~/img/bakery.jpeg">
 
-  @using VendorAndOrderTracker.Models;
+  <div class="container">
+    @using VendorAndOrderTracker.Models;
 
-  <h3>Here are all the orders for this vendor:</h3>
+    <h1>Orders List ✔️</h1>
 
-  <ol>
-    @foreach (Order order in (List<Order>)@Model["orders"])
-    {
-      <a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>
-        <li>@order.Title</li>
-      </a>
-    }
-  </ol>
+    <ol>
+      @foreach (Order order in (List<Order>)@Model["orders"])
+      {
+        <a href='/vendors/@Model["vendor"].Id/orders/@order.Id'>
+          <li><h5>@order.Title</h5></li>
+        </a>
+      }
+    </ol>
+  </div>
+  <div class="center">
+    <a href='/vendors/@Model["vendor"].Id/orders/neworder'><button type="submit" class="btn btn-outline-dark btn-lg">Add a new order</button></a>
+    <a href='/vendors'><button type="submit" class="btn btn-outline-dark btn-lg">Return to vendor list</button></a>
+    <a href='/'><button type="submit" class="btn btn-outline-dark btn-lg">Return to Main Page</button></a>
+  </div>
 
-  <p><a href='/vendors/@Model["vendor"].Id/orders/neworder'>Add a new order</a></p>
-  <p><a href='/vendors'>Return to vendor list</a></p>
-  <p><a href='/'>Return to Main Page</a></p>
 </body>
 
 </html>
