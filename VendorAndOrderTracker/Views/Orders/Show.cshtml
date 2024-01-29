@@ -14,12 +14,15 @@
     @* <img src="~/img/logo.png"> *@
     <h1>Order Details: </h1>
 
-    <h2>@Model["order"].Description</h2>
+    <h2>@Model["order"].Title</h2>
     <h3>Price: $@Model["order"].Price</h3>
+    <h3>Date Placed: @Model["order"].DatePlaced</h3>
+    <h3>Order Description: @Model["order"].Description</h3>
     
     <h2>Vendor Information:</h2>
-    <p>Vendor Name: @Model["vendor"].vendorName</p>
-    <p>Vendor Description: @Model["vendor"].vendorDescription</p>
+    <p>Vendor Name: @Model["vendor"].Name</p>
+    <p>Vendor Description: @Model["vendor"].Description</p>
+
 
     <a href='/vendors/@Model["vendor"].Id'>Back to Vendor</a>
     <a href='/vendors/@Model["vendor"].Id/orders/new'>Add another order</a>

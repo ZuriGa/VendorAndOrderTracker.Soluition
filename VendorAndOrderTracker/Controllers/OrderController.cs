@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using VendorAndOrderTracker.Models;
 using System.Collections.Generic;
+using System;
 
 namespace VendorAndOrderTracker.Controllers
 {
   public class OrdersController : Controller
   {
-    [HttpGet("/vendors/{vendorId}/orders/new")]
+    [HttpGet("/vendors/{vendorId}/orders/neworder")]
     public ActionResult New(int vendorId)
     {
       Vendor vendor = Vendor.Find(vendorId);
@@ -20,12 +21,13 @@ namespace VendorAndOrderTracker.Controllers
       if (vendor != null)
       {
         Order newOrder = new Order(title, description, price);
+        newOrder.DatePlaced = DateTime.Now;
         vendor.AddOrder(newOrder);
       }
-      return RedirectToAction("Show", "Vendor", new { vendorId });
+      return RedirectToAction("Show", "Vendor", new { id = vendorId });
     }
 
-    [HttpGet("/vendors/{vendorId}/orders/{ordersId}")]
+    [HttpGet("/vendors/{vendorId}/orders/{orderId}")]
     public ActionResult Show(int vendorId, int orderId)
     {
       Order order = Order.Find(orderId);
@@ -33,8 +35,7 @@ namespace VendorAndOrderTracker.Controllers
       Dictionary<string, object> model = new Dictionary<string, object>();
       model.Add("order", order);
       model.Add("vendor", vendor);
-      model.Add("orders", vendor.Orders);
-      return View(model);
+      return View("~/Views/Orders/Show.cshtml", model);
     }
   }
 }

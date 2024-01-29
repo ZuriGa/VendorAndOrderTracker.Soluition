@@ -10,20 +10,18 @@
 </head>
 
 <body>
-  @* <img src="~/img/logo.png"> *@
-
   <div class="flex-container">
 
     <form action="/vendors/@Model.Id/orders/new" method="post">
       <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
       <label for="orderTitle">Order Title</label>
-      <input id="orderTitle" name="orderTitle" type="text" >
+      <input id="orderTitle" name="orderTitle" type="text">
 
       <label for="orderDescription">Order Description</label>
-      <input id="orderDescription" name="orderDescription" type="text" >
+      <input id="orderDescription" name="orderDescription" type="text">
 
       <label for="orderPrice">Order Price</label>
-      <input id="orderPrice" name="orderPrice" type="number" >
+      <input id="orderPrice" name="orderPrice" type="number">
 
       <button type="submit">Submit</button>
     </form>
